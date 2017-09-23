@@ -1,0 +1,30 @@
+﻿<Window x:Class="WpfApp2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp2"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="900" Width="1200" MinWidth="1200" MinHeight="900">
+    <Grid x:Name="grid">
+        <Image x:Name="turtle" Source="images/turtle_left.png" RenderTransformOrigin="0.5,0.5" Height="300" Width="300" Margin="27,592,865,-23">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <Image x:Name="btn_feed" Source="images/btn_gray.png" Width="350" Height="56" HorizontalAlignment="Center" Margin="421,55,421,758" MouseLeftButtonDown="btn_feed_MouseLeftButtonDown" MouseRightButtonDown="btn_feed_MouseRightButtonDown" Stretch="Fill" MouseLeftButtonUp="btn_feed_MouseLeftButtonUp"/>
+
+    </Grid>
+    <Window.Background>
+        <ImageBrush>
+            <ImageBrush.ImageSource>
+                <BitmapImage UriSource="images/bg.png"/>
+            </ImageBrush.ImageSource>
+        </ImageBrush>
+    </Window.Background>
+</Window>
