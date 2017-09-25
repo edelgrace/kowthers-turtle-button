@@ -6,6 +6,130 @@
         xmlns:local="clr-namespace:WpfApp2"
         mc:Ignorable="d"
         Title="MainWindow" Height="900" Width="1200" MinWidth="1200" MinHeight="900">
+    <Window.Resources>
+        <Storyboard x:Key="story_turtle_left" AutoReverse="False" RepeatBehavior="1x">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="turtle">
+                <EasingDoubleKeyFrame KeyTime="0" Value="889.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.9" Value="763.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.9" Value="679.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.9" Value="573"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:3.9" Value="450"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:4.9" Value="341"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:5.9" Value="233"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:7" Value="75"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames x:Name="eat_left" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="turtle">
+                <EasingDoubleKeyFrame KeyTime="0" Value="18"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.9" Value="27"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.9" Value="21"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.9" Value="27"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:3.9" Value="16.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:4.9" Value="10.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:5.9" Value="9.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:7" Value="12.5"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="turtle">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.9" Value="-4.018"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.9" Value="3.867"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.9" Value="-1.944"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:3.9" Value="3.867"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:4.9" Value="-4.882"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:5.9" Value="7.649"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:7" Value="-4.283"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="turtle">
+                <EasingDoubleKeyFrame KeyTime="0:0:7" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+
+        </Storyboard>
+        <Storyboard x:Key="story_turtle_right">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="turtle">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="119"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="225"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:3" Value="313"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:4" Value="421"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:5" Value="526"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:6" Value="636"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:7" Value="741"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:8" Value="839"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="turtle">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="11"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="17"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:3" Value="19"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:4" Value="13"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:5" Value="20"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:6" Value="20"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:7" Value="21"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:8" Value="22"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="turtle">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="2.319"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="-8.866"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:3" Value="4.6"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:4" Value="-4.654"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:5" Value="7.258"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:6" Value="-6.583"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:7" Value="5.933"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:8" Value="-2.966"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="eat_left">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="turtle">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="-29"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="-45"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:3" Value="-68"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:4" Value="-92"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="turtle">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="18"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="-4"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:3" Value="29"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:4" Value="9"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="turtle">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="8.157"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="-3.297"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:3" Value="9.287"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:4" Value="0.618"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="eat_right">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="turtle">
+                <EasingDoubleKeyFrame KeyTime="0:0:4" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:3" Value="-29"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="-45"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="-68"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="-92"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="turtle">
+                <EasingDoubleKeyFrame KeyTime="0:0:4" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:3" Value="18"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="-4"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="29"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="9"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="turtle">
+                <EasingDoubleKeyFrame KeyTime="0:0:4" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:3" Value="8.157"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="-3.297"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="9.287"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0.618"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource story_turtle_left}"/>
+        </EventTrigger>
+    </Window.Triggers>
     <Grid x:Name="grid">
         <Image x:Name="turtle" Source="images/turtle_left.png" RenderTransformOrigin="0.5,0.5" Height="300" Width="300" Margin="27,592,865,-23">
             <Image.RenderTransform>
