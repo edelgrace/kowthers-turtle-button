@@ -28,6 +28,15 @@ namespace WpfApp2
         private Stopwatch stopwatch;
         private int direction;
         private bool eat;
+        private List<int> dreams;
+
+        // constants
+        private const int movie = 0;
+        private const int kitty = 1;
+        private const int work = 2;
+        private const int dnd = 3;
+        private const int xmen = 4;
+        private const int historical = 5;
 
         public MainWindow()
         {
@@ -42,6 +51,14 @@ namespace WpfApp2
                 {"brocoli", 0 },
                 {"strawberry", 0 }
             };
+
+            dreams = new List<int>();
+            dreams.Add(movie);
+            dreams.Add(kitty);
+            dreams.Add(work);
+            dreams.Add(dnd);
+            dreams.Add(xmen);
+            dreams.Add(historical);
 
             stopwatch = new Stopwatch();
 
@@ -61,20 +78,64 @@ namespace WpfApp2
         {
             eat = false;
 
-            turtle_think();
+            turtle_think(sender, e);
 
-            story_turtle_l_Completed(sender, e);
         }
 
-        private void turtle_think()
+        private void turtle_think(object sender, EventArgs e)
         {
+            Debug.Write("THINK");
+            Image curr_food = grid.FindName(food + "_" + food_count[food]) as Image;
+            grid.Children.Remove(curr_food);
 
+            //Image thought_bubble = new Image();
+            //thought_bubble.Width = 600;
+            //thought_bubble.Height = 600;
+            //grid.Children.Add(thought_bubble);
+            
+
+            Random rand = new Random();
+            int dream_num = rand.Next(0, dreams.Count);
+            int dream = dreams[dream_num];
+
+            switch(dream)
+            {
+                case movie:
+                    thought_bubble.Source = new Uri(@"images/movie.png", UriKind.Relative);
+                    
+                    break;
+                case kitty:
+                    thought_bubble.Source = new Uri(@"images/cat.gif", UriKind.Relative);
+                    break;
+                case work:
+                    thought_bubble.Source = new Uri(@"images/work.png", UriKind.Relative);
+                    break;
+                case dnd:
+                    thought_bubble.Source =new Uri(@"images/dnd.gif", UriKind.Relative);
+                    break;
+                case xmen:
+                    thought_bubble.Source = new Uri(@"images/xmen.gif", UriKind.Relative);
+                    break;
+                case historical:
+                    thought_bubble.Source = new Uri(@"images/historical.gif", UriKind.Relative);
+                    break;
+                default:
+                    thought_bubble.Source = new Uri(@"images/cat.gif", UriKind.Relative);
+                    break;
+            }
+
+            thought_bubble.Visibility = Visibility.Visible;
+            thought_bubble.Play();
+
+            story_turtle_l_Completed(sender, e);
         }
 
         private void eat_left_Completed(object sender, EventArgs e)
         {
             Storyboard eat_right = FindResource("eat_right") as Storyboard;
 
+            turtle.Source = new BitmapImage(new Uri(@"images/turtle_right.png", UriKind.Relative));
+            turtle.Margin = new Thickness(0, 592, 865, -23); 
             eat_right.Begin();
         }
 
@@ -156,9 +217,11 @@ namespace WpfApp2
 
                 food_count[food] += 1;
                 food_img.Name = food + "_" + food_count[food];
+                Debug.Write("\n\nFOOD: " + food_img.Name);
 
                 // add to the grid
                 grid.Children.Add(food_img);
+                grid.RegisterName(food_img.Name, food_img);
             }
 
             // switch the 

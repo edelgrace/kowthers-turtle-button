@@ -110,5 +110,13 @@
   <ItemGroup>
     <Resource Include="turtle_right.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\cat.gif" />
+    <Resource Include="images\dnd.gif" />
+    <Resource Include="images\historical.gif" />
+    <Resource Include="images\movie.png" />
+    <Resource Include="images\work.png" />
+    <Resource Include="images\xmen.gif" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

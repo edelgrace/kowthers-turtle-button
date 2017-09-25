@@ -142,6 +142,7 @@
             </Image.RenderTransform>
         </Image>
         <Image x:Name="btn_feed" Source="images/btn_gray.png" Width="350" Height="56" HorizontalAlignment="Center" Margin="421,55,421,758" MouseLeftButtonDown="btn_feed_MouseLeftButtonDown" MouseRightButtonDown="btn_feed_MouseRightButtonDown" Stretch="Fill" MouseLeftButtonUp="btn_feed_MouseLeftButtonUp"/>
+        <MediaElement x:Name="thought_bubble" MediaEnded="story_turtle_l_Completed" UnloadedBehavior="Manual" Source="img/cat.gif" LoadedBehavior="Play" Stretch="None" Visibility="Hidden" />
 
     </Grid>
     <Window.Background>
