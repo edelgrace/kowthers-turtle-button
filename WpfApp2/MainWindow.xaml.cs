@@ -145,8 +145,7 @@ namespace WpfApp2
         private void eat_left_Completed(object sender, EventArgs e)
         {
             Storyboard eat_right = FindResource("eat_right") as Storyboard;
-
-            Debug.Write("THINK");
+            
             Image curr_food = grid.FindName(food + "_" + food_count[food]) as Image;
             grid.Children.Remove(curr_food);
 
@@ -217,8 +216,9 @@ namespace WpfApp2
 
             stopwatch.Stop();
 
+            Debug.Write(stopwatch.ElapsedMilliseconds);
             // check if the button has been held for two seconds
-            if(stopwatch.ElapsedMilliseconds >= 1000)
+            if (stopwatch.ElapsedMilliseconds >= 200)
             {
                 eat = true;
 
@@ -243,7 +243,6 @@ namespace WpfApp2
 
                 food_count[food] += 1;
                 food_img.Name = food + "_" + food_count[food];
-                Debug.Write("\n\nFOOD: " + food_img.Name);
 
                 // add to the grid
                 grid.Children.Add(food_img);
@@ -300,7 +299,6 @@ namespace WpfApp2
 
 
             stopwatch.Reset();
-            Debug.Write("\nENDUP: yes");
             // click through the food
 
         }

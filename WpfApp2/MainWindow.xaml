@@ -144,7 +144,7 @@
             </Image.RenderTransform>
         </Image>
         <Image x:Name="btn_feed" Source="images/btn_blue.png" Width="350" Height="56" HorizontalAlignment="Center" VerticalAlignment="Top"  Margin="0,20,0,0" MouseLeftButtonDown="btn_feed_MouseLeftButtonDown" MouseRightButtonDown="btn_feed_MouseRightButtonDown" Stretch="Fill" MouseLeftButtonUp="btn_feed_MouseLeftButtonUp"/>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="183.84" Width="317" FontSize="20" Foreground="DarkSlateGray"><Run FontWeight="Bold" Text="Instructions:"/><LineBreak/><Run/><LineBreak/><Run Text="1. Left click: scroll through food options"/><LineBreak/><Run Text="2. Hold left click: Feed the turtle"/></TextBlock>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="20,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="183.84" Width="317" FontSize="20" Foreground="DarkSlateGray"><Run FontWeight="Bold" Text="Instructions:"/><LineBreak/><Run/><LineBreak/><Run FontStyle="Italic" FontWeight="Bold" Text="1. Left click 'Feed Me!' button:"></Run><Run Text=" Toggle through food options"/><LineBreak/><Run FontWeight="Bold" FontStyle="Italic" Text="2. Hold left click for one second and release:"></Run><Run Text=" Food will appear in the turtle bowl"/></TextBlock>
 
     </Grid>
     <Window.Background>
