@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp2"
         mc:Ignorable="d"
-        Title="MainWindow" Height="900" Width="1200" MinWidth="1200" MinHeight="900">
+        Title="Kowther's Turtle Button" Height="900" Width="1200" MinWidth="1200" MinHeight="900">
     <Window.Resources>
         <Storyboard x:Key="story_turtle_left" AutoReverse="False" RepeatBehavior="1x">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="turtle">

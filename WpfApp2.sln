@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
+# Blend for Visual Studio 15
 VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp2", "WpfApp2\WpfApp2.csproj", "{06BF5E40-E778-46CB-9D6C-D583A0494D19}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KowtherButton", "WpfApp2\KowtherButton.csproj", "{06BF5E40-E778-46CB-9D6C-D583A0494D19}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
