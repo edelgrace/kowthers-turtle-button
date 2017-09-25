@@ -131,6 +131,8 @@
         </EventTrigger>
     </Window.Triggers>
     <Grid x:Name="grid">
+        <Image x:Name="thought_bubble" Source="images/thought_bubble.png" RenderTransformOrigin="0.5,0.5" Height="584" Width="600" Visibility="Hidden">
+        </Image>
         <Image x:Name="turtle" Source="images/turtle_left.png" RenderTransformOrigin="0.5,0.5" Height="300" Width="300" Margin="27,592,865,-23">
             <Image.RenderTransform>
                 <TransformGroup>
@@ -141,8 +143,8 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
-        <Image x:Name="btn_feed" Source="images/btn_gray.png" Width="350" Height="56" HorizontalAlignment="Center" Margin="421,55,421,758" MouseLeftButtonDown="btn_feed_MouseLeftButtonDown" MouseRightButtonDown="btn_feed_MouseRightButtonDown" Stretch="Fill" MouseLeftButtonUp="btn_feed_MouseLeftButtonUp"/>
-        <MediaElement x:Name="thought_bubble" MediaEnded="story_turtle_l_Completed" UnloadedBehavior="Manual" Source="img/cat.gif" LoadedBehavior="Play" Stretch="None" Visibility="Hidden" />
+        <Image x:Name="btn_feed" Source="images/btn_blue.png" Width="350" Height="56" HorizontalAlignment="Center" Margin="421,55,421,758" MouseLeftButtonDown="btn_feed_MouseLeftButtonDown" MouseRightButtonDown="btn_feed_MouseRightButtonDown" Stretch="Fill" MouseLeftButtonUp="btn_feed_MouseLeftButtonUp"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="183.84" Width="317" FontSize="20" Foreground="DarkSlateGray"><Run FontWeight="Bold" Text="Instructions:"/><LineBreak/><Run/><LineBreak/><Run Text="1. Left click: scroll through food options"/><LineBreak/><Run Text="2. Hold left click: Feed the turtle"/></TextBlock>
 
     </Grid>
     <Window.Background>

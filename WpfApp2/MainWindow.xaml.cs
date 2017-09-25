@@ -11,9 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Windows.Threading;
 using System.Diagnostics;
-using System.Media;
 using System.Windows.Media.Animation;
 
 namespace WpfApp2
@@ -26,9 +25,11 @@ namespace WpfApp2
         private String food;
         private Dictionary<String, int> food_count;
         private Stopwatch stopwatch;
-        private int direction;
         private bool eat;
-        private List<int> dreams;
+        private DispatcherTimer timer;
+        private DispatcherTimer animate_timer;
+        private int animate;
+        private int dream;
 
         // constants
         private const int movie = 0;
@@ -43,24 +44,21 @@ namespace WpfApp2
             InitializeComponent();
 
             food = "fly";
-            direction = -1;
             eat = false;
+            animate = 0;
+            dream = 4;
 
             food_count = new Dictionary<string, int>() {
                 {"fly", 0 },
                 {"brocoli", 0 },
                 {"strawberry", 0 }
             };
-
-            dreams = new List<int>();
-            dreams.Add(movie);
-            dreams.Add(kitty);
-            dreams.Add(work);
-            dreams.Add(dnd);
-            dreams.Add(xmen);
-            dreams.Add(historical);
+            
 
             stopwatch = new Stopwatch();
+
+            timer = new DispatcherTimer();
+            animate_timer = new DispatcherTimer();
 
             Storyboard story_turtle_l = FindResource("story_turtle_left") as Storyboard;
             Storyboard story_turtle_r = FindResource("story_turtle_right") as Storyboard;
@@ -76,63 +74,81 @@ namespace WpfApp2
 
         private void eat_right_Completed(object sender, EventArgs e)
         {
-            eat = false;
-
             turtle_think(sender, e);
 
         }
 
         private void turtle_think(object sender, EventArgs e)
         {
-            Debug.Write("THINK");
-            Image curr_food = grid.FindName(food + "_" + food_count[food]) as Image;
-            grid.Children.Remove(curr_food);
-
-            //Image thought_bubble = new Image();
-            //thought_bubble.Width = 600;
-            //thought_bubble.Height = 600;
-            //grid.Children.Add(thought_bubble);
-            
 
             Random rand = new Random();
-            int dream_num = rand.Next(0, dreams.Count);
-            int dream = dreams[dream_num];
+            dream = rand.Next(0, 5);
 
-            switch(dream)
-            {
-                case movie:
-                    thought_bubble.Source = new Uri(@"images/movie.png", UriKind.Relative);
-                    
-                    break;
-                case kitty:
-                    thought_bubble.Source = new Uri(@"images/cat.gif", UriKind.Relative);
-                    break;
-                case work:
-                    thought_bubble.Source = new Uri(@"images/work.png", UriKind.Relative);
-                    break;
-                case dnd:
-                    thought_bubble.Source =new Uri(@"images/dnd.gif", UriKind.Relative);
-                    break;
-                case xmen:
-                    thought_bubble.Source = new Uri(@"images/xmen.gif", UriKind.Relative);
-                    break;
-                case historical:
-                    thought_bubble.Source = new Uri(@"images/historical.gif", UriKind.Relative);
-                    break;
-                default:
-                    thought_bubble.Source = new Uri(@"images/cat.gif", UriKind.Relative);
-                    break;
-            }
+            do_thought_bubble();
+
+            timer.Tick += story_turtle_l_Completed;
+            timer.Interval = System.TimeSpan.FromSeconds(4);
+            timer.Start();
+        }
+        
+        private void do_thought_bubble()
+        {
 
             thought_bubble.Visibility = Visibility.Visible;
-            thought_bubble.Play();
+            
+            switch (dream)
+            {
+                case movie:
+                case work:
+                    thought_bubble.Source = new BitmapImage(new Uri(@"images/" + dream + ".png", UriKind.Relative));
+                    break;
+                case xmen:
+                    animate = -1;
+                    animate_timer.Tick += animate_thought_bubble;
+                    animate_timer.Interval = System.TimeSpan.FromMilliseconds(500);
+                    animate_timer.Start();
+                    break;
+                default:
+                    animate_timer.Tick += animate_thought_bubble;
+                    animate_timer.Interval = System.TimeSpan.FromMilliseconds(500);
+                    animate_timer.Start();
+                    break;
+            }
+        }
 
-            story_turtle_l_Completed(sender, e);
+        private void animate_thought_bubble(object sender, EventArgs e)
+        {
+            Debug.Write("\nANIMATED\n");
+            if (animate ==0)
+            {
+                thought_bubble.Source = new BitmapImage(new Uri(@"images/" + dream + "_1.png", UriKind.Relative));
+                animate = 1;
+
+            }
+            else if(animate == 1)
+            {
+                thought_bubble.Source = new BitmapImage(new Uri(@"images/" + dream + "_2.png", UriKind.Relative));
+                animate = 0;
+
+                if (dream == xmen)
+                {
+                    animate = -1;
+                }
+            }
+            else if(animate == -1)
+            {
+                thought_bubble.Source = new BitmapImage(new Uri(@"images/" + dream + "_3.png", UriKind.Relative));
+                animate = 0;
+            }
         }
 
         private void eat_left_Completed(object sender, EventArgs e)
         {
             Storyboard eat_right = FindResource("eat_right") as Storyboard;
+
+            Debug.Write("THINK");
+            Image curr_food = grid.FindName(food + "_" + food_count[food]) as Image;
+            grid.Children.Remove(curr_food);
 
             turtle.Source = new BitmapImage(new Uri(@"images/turtle_right.png", UriKind.Relative));
             turtle.Margin = new Thickness(0, 592, 865, -23); 
@@ -141,9 +157,21 @@ namespace WpfApp2
 
         private void story_turtle_l_Completed(object sender, EventArgs e)
         {
-            if(!eat)
+            thought_bubble.Visibility = Visibility.Hidden;
+            if(timer.IsEnabled)
             {
-                direction = 1;
+                timer.Stop();
+                animate_timer.Stop();
+                thought_bubble.Source = new BitmapImage(new Uri(@"images/thought_bubble.png", UriKind.Relative));
+                btn_feed.Source = new BitmapImage(new Uri(@"images/btn_green.png", UriKind.Relative));
+                food = "brocoli";
+                animate = 0;
+                eat = false;
+
+            }
+
+            if (!eat)
+            {
                 turtle.Source = new BitmapImage(new Uri(@"images/turtle_right.png", UriKind.Relative));
                 turtle.Width = 300;
                 turtle.Height = 300;
@@ -161,7 +189,6 @@ namespace WpfApp2
 
         private void story_turtle_r_Completed(object sender, EventArgs e)
         {
-            direction = -1;
             turtle.Source = new BitmapImage(new Uri(@"images/turtle_left.png", UriKind.Relative));
             turtle.Width = 300;
             turtle.Height = 300;
@@ -173,14 +200,16 @@ namespace WpfApp2
 
         private void btn_feed_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            stopwatch.Start();
+            if(!eat)
+            {
+                stopwatch.Start();
+            }
             
-            Debug.Write("\nSTART: " + stopwatch.ElapsedMilliseconds);
         }
 
         private void btn_feed_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
         {
-
+            story_turtle_l_Completed(sender, e);
         }
 
         private void btn_feed_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -189,9 +218,11 @@ namespace WpfApp2
             stopwatch.Stop();
 
             // check if the button has been held for two seconds
-            if(stopwatch.ElapsedMilliseconds >= 2000)
+            if(stopwatch.ElapsedMilliseconds >= 1000)
             {
                 eat = true;
+
+                btn_feed.Source = new BitmapImage(new Uri(@"images/btn_gray.png", UriKind.Relative));
 
                 // put food in bowl
                 Image food_img = new Image();
@@ -201,14 +232,9 @@ namespace WpfApp2
                 food_img.VerticalAlignment = VerticalAlignment.Bottom;
 
                 // positioning
-                int margin_left = 60 + ((food_count[food] % 15) * 10);
+                int margin_left = 70;
                 int margin_bottom = 280;
                 
-                if (margin_left >= 200)
-                {
-                    margin_bottom += 10;
-                    margin_left = 60;
-                }
                 food_img.Margin = new Thickness(margin_left,0,0,margin_bottom);
 
                 // appearance
@@ -227,39 +253,48 @@ namespace WpfApp2
             // switch the 
             else
             {
-                switch (food)
+                if (eat)
                 {
-                    case "fly":
-                        // change button source
-                        btn_feed.Source = new BitmapImage(new Uri(@"images/btn_green.png", UriKind.Relative));
 
-                        // change food flag
-                        food = "brocoli";
+                    btn_feed.Source = new BitmapImage(new Uri(@"images/btn_gray.png", UriKind.Relative));
 
-                        break;
-                    case "brocoli":
-                        // change button source
-                        btn_feed.Source = new BitmapImage(new Uri(@"images/btn_red.png", UriKind.Relative));
+                }
+                else
+                {
+                    switch (food)
+                    {
+                        case "fly":
+                            // change button source
+                            btn_feed.Source = new BitmapImage(new Uri(@"images/btn_green.png", UriKind.Relative));
 
-                        // change food flag
-                        food = "strawberry";
+                            // change food flag
+                            food = "brocoli";
 
-                        // put food in bowl
+                            break;
+                        case "brocoli":
+                            // change button source
+                            btn_feed.Source = new BitmapImage(new Uri(@"images/btn_red.png", UriKind.Relative));
 
-                        break;
-                    case "strawberry":
-                        // change button source
-                        btn_feed.Source = new BitmapImage(new Uri(@"images/btn_blue.png", UriKind.Relative));
+                            // change food flag
+                            food = "strawberry";
 
-                        // change food flag
-                        food = "fly";
+                            // put food in bowl
 
-                        // put food in bowl
+                            break;
+                        case "strawberry":
+                            // change button source
+                            btn_feed.Source = new BitmapImage(new Uri(@"images/btn_blue.png", UriKind.Relative));
 
-                        break;
-                    default:
-                        Debug.Write("\nDEFLT: yes");
-                        break;
+                            // change food flag
+                            food = "fly";
+
+                            // put food in bowl
+
+                            break;
+                        default:
+                            Debug.Write("\nDEFLT: yes");
+                            break;
+                    }
                 }
             }
 

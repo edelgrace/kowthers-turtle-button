@@ -103,20 +103,31 @@
     <Resource Include="images\turtle_right.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\food_brocoli.png" />
-    <Resource Include="images\food_fly.png" />
-    <Resource Include="images\food_strawberry.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="turtle_right.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\cat.gif" />
-    <Resource Include="images\dnd.gif" />
-    <Resource Include="images\historical.gif" />
-    <Resource Include="images\movie.png" />
-    <Resource Include="images\work.png" />
-    <Resource Include="images\xmen.gif" />
+    <Resource Include="images\thought_bubble.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\1.gif" />
+    <Resource Include="images\1_1.png" />
+    <Resource Include="images\1_2.png" />
+    <Resource Include="images\2.png" />
+    <Resource Include="images\3_1.png" />
+    <Resource Include="images\3_2.png" />
+    <Resource Include="images\4_1.png" />
+    <Resource Include="images\4_2.png" />
+    <Resource Include="images\4_3.png" />
+    <Resource Include="images\5_1.png" />
+    <Resource Include="images\5_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\food_brocoli.png" />
+    <Resource Include="images\food_fly.png" />
+    <Resource Include="images\food_strawberry.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
