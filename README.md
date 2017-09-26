@@ -12,6 +12,11 @@ Read more about the project [here](https://edelgrace.github.io/project/kowthers-
 * [Download](https://github.com/edelgrace/kowthers-turtle-button/raw/master/KowtherButton.exe) the application
 * Run the application!
 
+## How to Use
+* Single left click: Toggle different food options
+* Long hold left click: Put food into the turtle bowl
+* Watch the turtle eat and dream!
+
 ## Contact
 
 Any problems? Contact me at [edel.altares(at)gmail.com](mailto:edel.altares@gmail.com).
