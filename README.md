@@ -4,6 +4,9 @@ This is a small application intended to capture the personality of a fellow clas
 
 Read more about the project [here](https://edelgrace.github.io/project/kowthers-turtle-button).
 
+## Requirements
+* A Windows computer
+
 ## How to run
 
 * [Download](https://github.com/edelgrace/kowthers-turtle-button/raw/master/KowtherButton.exe) the application
