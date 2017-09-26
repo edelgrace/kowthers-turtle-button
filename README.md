@@ -20,3 +20,8 @@ Read more about the project [here](https://edelgrace.github.io/project/kowthers-
 ## Contact
 
 Any problems? Contact me at [edel.altares(at)gmail.com](mailto:edel.altares@gmail.com).
+
+# Credits
+"Fluffing a Duck" Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 3.0 License
+http://creativecommons.org/licenses/by/3.0/
